@@ -1,0 +1,19 @@
+
+<% if params[:page] %>
+
+$('#products .row').append('<%= j render partial: "spree/shared/products_list_infinite", locals:{products: @products} %>');
+<% if @products.next_page %>
+$('.pagination').replaceWith('<%= j paginate @products %>');
+
+
+
+<% else %>
+$(window).off('scroll');
+$('.pagination, #more_products').remove();
+<% end %>
+<%end%>
+
+$('#more_products a').attr("href", $(".pagination").find(".next>a").attr("href"));
+
+setuplazy();
+

@@ -1,6 +1,4 @@
 <% cache( [I18n.locale, current_currency, products], expires_in: 10.minutes) do %>
-
-
           <% products.each do |product| %>
               <% url = spree.product_url(product, taxon_id: @taxon.try(:id)) %>
               <div id="product_<%= product.id %>" class="col-md-3 col-sm-6 product-list-item" data-hook="products_list_item" itemscope itemtype="https://schema.org/Product">
@@ -20,6 +18,4 @@
               </div>
           <% end %>
           <% reset_cycle("classes") %>
-
-
   <% end %>
